@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simular Nueva Pestaña</title>
+    <title>Simular Nueva Pestaña Dentro de la Misma Página</title>
     <style>
         body, html {
             height: 100%;
@@ -35,26 +35,28 @@
         .button-container button:hover {
             background-color: #555;
         }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
 </head>
 <body>
     <div class="button-container">
-        <button onclick="openWindow('https://tele-libre.com/en-vivo-online/europa-europa/embed.php')">Mostrar Página 1</button>
-        <button onclick="openWindow('https://rcv.mitele.uno/extension.php?get=UGFyYW1vdW50&start=true')">Mostrar Página 2</button>
-        <button onclick="openWindow('https://fullchannels.online/html/cvatt2.html?get=U3BhY2U=')">Mostrar Página 3</button>
-        <button onclick="openWindow('https://a3.115tv.site/cvatt2.html?get=VE5UX0hEX0FyZw')">Mostrar Página 4</button>
+        <button onclick="loadPage('https://tele-libre.com/en-vivo-online/europa-europa/embed.php')">Mostrar Página 1</button>
+        <button onclick="loadPage('https://rcv.mitele.uno/extension.php?get=UGFyYW1vdW50&start=true')">Mostrar Página 2</button>
+        <button onclick="loadPage('https://fullchannels.online/html/cvatt2.html?get=U3BhY2U=')">Mostrar Página 3</button>
+        <button onclick="loadPage('https://a3.115tv.site/cvatt2.html?get=VE5UX0hEX0FyZw')">Mostrar Página 4</button>
     </div>
 
+    <iframe id="contentFrame" src=""></iframe>
+
     <script>
-        function openWindow(url) {
-            // Abrir una ventana emergente simulando una nueva pestaña
-            const newWindow = window.open(url, '_blank', 'width=1200,height=800,top=50,left=50,toolbar=no,menubar=no,scrollbars=yes,status=no');
-            
-            // Verificar si la ventana emergente fue bloqueada
-            if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') { 
-                alert('La ventana emergente fue bloqueada. Por favor, habilita las ventanas emergentes para continuar.');
-            }
+        function loadPage(url) {
+            document.getElementById('contentFrame').src = url;
         }
     </script>
 </body>
 </html>
+
