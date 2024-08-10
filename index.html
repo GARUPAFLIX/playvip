@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simular Nueva Pestaña Dentro de la Misma Página</title>
+    <title>Simular Ventana Sin Barra de Direcciones</title>
     <style>
         body, html {
             height: 100%;
@@ -13,21 +13,39 @@
             align-items: center;
             justify-content: center;
             background-color: #000;
-        <!doctype html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simular Nueva Pestaña Dentro de la Misma Página</title>
-    <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: #000;
+            overflow: hidden; /* Evita el scroll */
+        }
+        .window-frame {
+            position: relative;
+            width: 80%;
+            height: 80%;
+            border: 2px solid #333;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .fake-header {
+            background-color: #444;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+        .close-button {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            background-color: #ff5c5c;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        iframe {
+            width: 100%;
+            height: calc(100% - 40px); /* Resta la altura de la cabecera falsa */
+            border: none;
         }
         .button-container {
             position: absolute;
@@ -50,11 +68,6 @@
         .button-container button:hover {
             background-color: #555;
         }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
     </style>
 </head>
 <body>
@@ -65,7 +78,13 @@
         <button onclick="loadPage('https://a3.115tv.site/cvatt2.html?get=VE5UX0hEX0FyZw')">Mostrar Página 4</button>
     </div>
 
-    <iframe id="contentFrame" src=""></iframe>
+    <div class="window-frame">
+        <div class="fake-header">
+            <div class="close-button"></div>
+            Simulador de Ventana
+        </div>
+        <iframe id="contentFrame" src=""></iframe>
+    </div>
 
     <script>
         function loadPage(url) {
