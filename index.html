@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simular Nueva Pestaña</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #000;
+        }
+        .button-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+        }
+        .button-container button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .button-container button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <button onclick="openWindow('https://tele-libre.com/en-vivo-online/europa-europa/embed.php')">Mostrar Página 1</button>
+        <button onclick="openWindow('https://rcv.mitele.uno/extension.php?get=UGFyYW1vdW50&start=true')">Mostrar Página 2</button>
+        <button onclick="openWindow('https://fullchannels.online/html/cvatt2.html?get=U3BhY2U=')">Mostrar Página 3</button>
+        <button onclick="openWindow('https://a3.115tv.site/cvatt2.html?get=VE5UX0hEX0FyZw')">Mostrar Página 4</button>
+    </div>
+
+    <script>
+        function openWindow(url) {
+            // Abrir una ventana emergente simulando una nueva pestaña
+            const newWindow = window.open(url, '_blank', 'width=1200,height=800,top=50,left=50,toolbar=no,menubar=no,scrollbars=yes,status=no');
+            
+            // Verificar si la ventana emergente fue bloqueada
+            if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') { 
+                alert('La ventana emergente fue bloqueada. Por favor, habilita las ventanas emergentes para continuar.');
+            }
+        }
+    </script>
+</body>
+</html>
